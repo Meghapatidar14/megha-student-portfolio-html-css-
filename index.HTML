@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Megha Patidar | Student Profile</title>
+
+    <style>
+        /* ---------- BASIC RESET ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fff8fb;
+            color: #2d2430;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ---------- NAVIGATION BAR ---------- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #f0dbe6;
+            box-shadow: 0 3px 15px rgba(100, 50, 80, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #a83f70;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #594553;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c24e83;
+        }
+
+        /* ---------- COMMON CONTAINER ---------- */
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        section {
+            padding: 75px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #8e315f;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #806b77;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 10% 20%, #ffe2ef 0, transparent 28%),
+                radial-gradient(circle at 90% 20%, #f6e5ff 0, transparent 25%),
+                linear-gradient(135deg, #fff8fb, #fdf0f7);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text .small-title {
+            color: #b54b7b;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(44px, 7vw, 78px);
+            line-height: 1;
+            color: #2d2430;
+            margin: 15px 0;
+        }
+
+        .hero-text h1 span {
+            color: #b33e73;
+        }
+
+        .hero-text h3 {
+            font-size: 22px;
+            color: #6f5966;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            max-width: 650px;
+            color: #6d5a65;
+            font-size: 17px;
+        }
+
+        .hero-buttons {
+            margin-top: 28px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #b33e73;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #8e315f;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid #b33e73;
+            color: #a23869;
+        }
+
+        .btn-outline:hover {
+            background: #b33e73;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .profile-wrapper {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-wrapper::before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: #f7cfe0;
+            z-index: 0;
+            transform: translate(15px, 15px);
+        }
+
+        .profile-image {
+            width: 330px;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid white;
+            box-shadow: 0 15px 40px rgba(125, 60, 90, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------- ABOUT ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #f0dce6;
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(100, 50, 80, 0.07);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(100, 50, 80, 0.12);
+        }
+
+        .card h3 {
+            color: #9e3868;
+            margin-bottom: 12px;
+        }
+
+        /* ---------- EDUCATION TABLE ---------- */
+        .table-card {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(100, 50, 80, 0.07);
+        }
+
+        th, td {
+            padding: 16px;
+            border-bottom: 1px solid #f0dce6;
+            text-align: left;
+        }
+
+        th {
+            background: #b33e73;
+            color: white;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #fff5f9;
+        }
+
+        /* ---------- ACHIEVEMENTS ---------- */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .achievement-image {
+            width: 100%;
+            max-height: 430px;
+            object-fit: cover;
+            border-radius: 22px;
+            box-shadow: 0 12px 30px rgba(100, 50, 80, 0.12);
+        }
+
+        .achievement-list {
+            list-style: none;
+        }
+
+        .achievement-list li {
+            background: #fff;
+            border: 1px solid #f0dce6;
+            margin: 12px 0;
+            padding: 16px 18px;
+            border-radius: 15px;
+        }
+
+        /* ---------- SKILLS ---------- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .skill-card {
+            width: 210px;
+            padding: 24px 18px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #f0dce6;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(100, 50, 80, 0.07);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(179, 62, 115, 0.16);
+        }
+
+        .skill-card .skill-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            color: #8e315f;
+            margin-bottom: 7px;
+        }
+
+        .skill-card p {
+            color: #806b77;
+            font-size: 14px;
+        }
+
+        /* ---------- HOBBIES ---------- */
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .hobby-card {
+            overflow: hidden;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #f0dce6;
+            box-shadow: 0 8px 25px rgba(100, 50, 80, 0.08);
+            transition: 0.3s;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .hobby-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .hobby-card .hobby-content {
+            padding: 18px;
+        }
+
+        .hobby-card h3 {
+            color: #9e3868;
+        }
+
+        /* ---------- JOURNEY ---------- */
+        .journey {
+            background: #fff0f6;
+        }
+
+        .journey-box {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid #f0dce6;
+            box-shadow: 0 10px 30px rgba(100, 50, 80, 0.07);
+        }
+
+        .journey-box ul {
+            text-align: left;
+            max-width: 650px;
+            margin: 25px auto 0;
+            padding-left: 25px;
+        }
+
+        /* ---------- SOCIAL LINKS ---------- */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .social-card {
+            text-align: center;
+            padding: 25px 15px;
+            background: white;
+            border: 1px solid #f0dce6;
+            border-radius: 18px;
+            color: #8e315f;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .social-card:hover {
+            background: #b33e73;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .social-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ---------- CONTACT ---------- */
+        .contact-box {
+            text-align: center;
+            background: linear-gradient(135deg, #8e315f, #c65387);
+            color: white;
+            border-radius: 28px;
+            padding: 45px 25px;
+        }
+
+        .contact-box h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .contact-box a {
+            color: white;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #241b22;
+            color: #eadce4;
+        }
+
+        footer strong {
+            color: #f5a9c9;
+        }
+
+        /* ---------- RESPONSIVE DESIGN ---------- */
+        @media (max-width: 850px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .hero-content,
+            .about-grid,
+            .achievement-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hobby-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            section {
+                padding: 55px 0;
+            }
+
+            .profile-image {
+                width: 260px;
+                height: 260px;
+            }
+
+            .profile-wrapper::before {
+                width: 285px;
+                height: 285px;
+            }
+
+            .hobby-grid,
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">MEGHA PATIDAR✨</div>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#currently-learning">Learning</a></li>
+                <li><a href="#social">Social</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- ================= HERO SECTION ================= -->
+    <header class="hero">
+        <div class="container hero-content">
+
+            <div class="hero-text">
+                <div class="small-title">Student • Creator • Explorer</div>
+
+                <h1>Hello, I'm <span>Megha Patidar</span> 🌷</h1>
+
+                <h3>B.Tech CSE | UIT-RGPV Bhopal</h3>
+
+                <p>
+                    Curious by nature, creative at heart. I love learning new things,
+                    exploring ideas, creating memories, and building my skills one step
+                    at a time.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">Know More</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+
+            <div class="profile-wrapper">
+                <img src="profile.jpeg"
+                     alt="Profile photo of Megha"
+                     class="profile-image">
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>About Me 🌸</h2>
+                <p>A little introduction about me</p>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="card">
+                    <h3>Who I Am</h3>
+                    <p>
+                        I am Megha, a Computer Science and Engineering student at
+                        UIT-RGPV Bhopal. I enjoy learning technology while also
+                        exploring my creative side through reading, drawing and
+                        content creation.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>My Mindset</h3>
+                    <p>
+                        I believe that every experience teaches something new.
+                        I am focused on improving myself, learning from every
+                        opportunity and enjoying the journey instead of rushing
+                        toward the destination.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= EDUCATION ================= -->
+    <section id="education" style="background:#fff0f6;">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Education 🎓</h2>
+                <p>My academic journey</p>
+            </div>
+
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institute</th>
+                            <th>Result / Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>B.Tech – Computer Science & Engineering</td>
+                            <td>UIT-RGPV, Bhopal</td>
+                            <td>Student</td>
+                        </tr>
+
+                        <tr>
+                            <td>Class 12th</td>
+                            <td>Adarsh Vidhya Mandir Higher Secondary School, Khachroda, Dhar</td>
+                            <td>90.8%</td>
+                        </tr>
+
+                        <tr>
+                            <td>Class 10th</td>
+                            <td>Adarsh Vidhya Mandir Higher Secondary School, Khachroda, Dhar</td>
+                            <td>95.2%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= ACHIEVEMENTS ================= -->
+    <section id="achievements">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Achievements 🏆</h2>
+                <p>Some moments I am proud of</p>
+            </div>
+
+            <div class="achievement-grid">
+
+                <img src="achievements.jpeg"
+                     alt="MP Tourism Quiz medals and certificates"
+                     class="achievement-image">
+
+                <div>
+                    <ul class="achievement-list">
+                        <li>
+                            🥇 <strong>Gold Medal – MP Tourism Quiz</strong><br>
+                            Honoured by the District SDM.
+                        </li>
+
+                        <li>
+                            🥈 <strong>Silver Medal – MP Tourism Quiz</strong><br>
+                            Honoured by Poet Sandeep Sharma Sir.
+                        </li>
+
+                        <li>
+                            🌟 Participated in quiz activities and continued
+                            building confidence through learning experiences.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" style="background:#fff0f6;">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Skills 💻</h2>
+                <p>Technologies and areas I am learning</p>
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>HTML</h3>
+                    <p>Building webpages and structured content.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>CSS</h3>
+                    <p>Creating clean and attractive webpage designs.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🎥</div>
+                    <h3>Content Creation</h3>
+                    <p>Creating and sharing creative digital content.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🗣️</div>
+                    <h3>Communication</h3>
+                    <p>Expressing ideas clearly and connecting with people.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= HOBBIES ================= -->
+    <section id="hobbies">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Hobbies & Interests 🌷</h2>
+                <p>The things I enjoy outside academics</p>
+            </div>
+
+            <div class="hobby-grid">
+
+                <article class="hobby-card">
+                    <img src="book.jpeg" alt="The Kite Runner book">
+                    <div class="hobby-content">
+                        <h3>📚 Reading</h3>
+                        <p>
+                            Reading books helps me explore different stories,
+                            perspectives and emotions.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="hobby-card">
+                    <img src="drawing.jpeg" alt="Hand-drawn artwork">
+                    <div class="hobby-content">
+                        <h3>🎨 Drawing</h3>
+                        <p>
+                            Drawing is one of my favourite ways to express
+                            creativity and spend peaceful time.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="hobby-card">
+                    <img src="college.jpeg" alt="College campus">
+                    <div class="hobby-content">
+                        <h3>🌍 Exploring</h3>
+                        <p>
+                            I enjoy exploring new places, creating memories and
+                            experiencing college life.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="hobby-card">
+                   <img src="MUSIC.jpg" alt="Music">
+                    <div class="hobby-content">
+                        <h3>🎵 Music</h3>
+                        <p>
+                            Music is one of my favourite ways to relax, enjoy
+                            peaceful moments and discover new songs.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="hobby-card">
+                   <img src="content.png" alt="content creation">
+                    <div class="hobby-content">
+                        <h3>🎬 Content Creation</h3>
+                        <p>
+                            I enjoy creating digital content, experimenting with
+                            ideas and sharing creative moments.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= JOURNEY ================= -->
+    <section id="journey" class="journey">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>My Journey / What I'm Learning 🌙</h2>
+                <p>Always learning. Always growing.</p>
+            </div>
+
+            <div class="journey-box">
+                <p>
+                    My journey is about combining technology with creativity.
+                    I am continuously improving my programming fundamentals and
+                    exploring web development and modern technologies.
+                </p>
+
+                <ul>
+                    <li>Strengthening programming and problem-solving skills</li>
+                    <li>Building websites using HTML and CSS</li>
+                    <li>Exploring backend development and APIs</li>
+                    <li>Learning through projects and practical experiences</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= CURRENTLY LEARNING ================= -->
+    <section id="currently-learning" style="background:#fff8fb;">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Currently Learning 🚀</h2>
+                <p>Skills I am actively working on right now</p>
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Improving HTML, CSS and responsive website design.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>C Programming</h3>
+                    <p>Programming fundamentals</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🧩</div>
+                    <h3>Problem Solving</h3>
+                    <p>Developing logical thinking</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= SOCIAL LINKS ================= -->
+    <section id="social">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Social Links 🔗</h2>
+                <p>Let's connect</p>
+            </div>
+
+            <div class="social-grid">
+
+                <a class="social-card"
+                   href="https://www.linkedin.com/in/megha-patidar-6368a4414"
+                   target="_blank">
+                    <span class="social-icon">💼</span>
+                    LinkedIn
+                </a>
+
+                <a class="social-card"
+                   href="https://github.com/Meghapatidar14"
+                   target="_blank">
+                    <span class="social-icon">💻</span>
+                    GitHub
+                </a>
+
+                <a class="social-card"
+                   href="https://www.youtube.com/@moonxmeghaa"
+                   target="_blank">
+                    <span class="social-icon">▶️</span>
+                    YouTube
+                </a>
+
+                <a class="social-card"
+                   href="https://www.instagram.com/ptdr_meghaaaaaa?stkn=amtvM2o4NmQ5ejlj"
+                   target="_blank">
+                    <span class="social-icon">📸</span>
+                    Instagram
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact">
+        <div class="container">
+
+            <div class="contact-box">
+                <h2>Let's Connect 🌸</h2>
+
+                <p>
+                    Feel free to reach out to me through email.
+                </p>
+
+                <p style="margin-top:15px;">
+                    📧
+                    <a href="mailto:patidarmegha021@gmail.com">
+                        patidarmegha021@gmail.com
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>
+            <strong>Curious by nature, creative at heart.</strong>
+        </p>
+
+        <p>
+            Building my skills, chasing new ideas, and enjoying the journey. 🌸
+        </p>
+
+        <p style="margin-top:10px;">
+            <em>Still learning. Still becoming. 🌙</em>
+        </p>
+
+        <p style="margin-top:20px;">
+            © 2026 Megha Patidar. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
